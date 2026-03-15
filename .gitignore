@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.DS_Store
+tf_env/
+scaler.pkl
+random_forest_motor_fault.pkl
+motor_fault_ann_model.h5
+motor.pkl

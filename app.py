@@ -1,7 +1,13 @@
 import joblib
 import streamlit as st
 import numpy as np
+st.warning("""
+⚠️ Note:
+This deployment currently uses a Random Forest model.
+The original ANN (TensorFlow-based) version faced deployment issues due to environment constraints.
 
+For full project details and ANN implementation, please refer to the README.md.
+""")
 
 # LOAD MODELS SAFELY
 

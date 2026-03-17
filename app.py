@@ -1,11 +1,10 @@
 import joblib
 import streamlit as st
 import numpy as np
-from tensorflow.keras.models import load_model
 
-# ------------------------------
+
 # LOAD MODELS SAFELY
-# ------------------------------
+
 
 # Random Forest
 try:
@@ -16,17 +15,10 @@ except Exception as e:
 
 # ANN
 try:
-    ann_model = load_model("motor_fault_ann_model.h5")
+    scaler, ann_model = joblib.load("motor2.pkl")
 except Exception as e:
     st.error(f"Error loading ANN model: {e}")
-    ann_model = None
-
-# Scaler
-try:
-    scaler = joblib.load("motor.pkl")
-except Exception as e:
-    st.error(f"Error loading scaler: {e}")
-    scaler = None
+    scaler, ann_model = None, None
 
 # ------------------------------
 # STYLE
@@ -87,9 +79,9 @@ p, li {
 </style>
 """, unsafe_allow_html=True)
 
-# ------------------------------
+
 # FAULT LABELS
-# ------------------------------
+
 
 fault_labels = {
     0: "Healthy Motor",
@@ -99,16 +91,16 @@ fault_labels = {
     4: "Broken Rotor Bar Fault"
 }
 
-# ------------------------------
+
 # PAGE NAVIGATION
-# ------------------------------
+
 
 if "page" not in st.session_state:
     st.session_state.page = "intro"
 
-# ------------------------------
+
 # INTRO PAGE
-# ------------------------------
+
 
 if st.session_state.page == "intro":
 
@@ -158,9 +150,9 @@ either model for prediction.
             st.session_state.page = "predict"
             st.rerun()
 
-# ------------------------------
+
 # PREDICTION PAGE
-# ------------------------------
+
 
 if st.session_state.page == "predict":
 

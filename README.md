@@ -36,7 +36,7 @@ Two models were tested on the updated dataset:
 - Also achieved **>95% accuracy**.
 - Less effective at distinguishing overlapping features compared to ANN.
 
-> A detailed comparison of the models can be found in [Model_Comparison.pdf](./Model_Comparison.pdf).
+> A detailed comparison of the models can be found in Model_Comparison pdf above.
 
 ---
 
